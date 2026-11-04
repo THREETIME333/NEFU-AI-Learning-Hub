@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "project": "NEFU AI Learning Hub",
+  "updated": "2026-11-04",
+  "entrypoint": "AI_START_HERE.md",
+  "default_behavior": "学生只用自然语言提问；AI按意图选择模块，按需读取具体条目，显示来源、日期与不确定性。",
+  "modules": [
+    {
+      "id": "courses",
+      "name": "课程与真题",
+      "intent": [
+        "课程",
+        "真题",
+        "试卷",
+        "作业",
+        "复习",
+        "题目"
+      ],
+      "index": "catalog.json",
+      "guide": "AI_START_HERE.md",
+      "truth_boundary": "只有经过授权的具体原卷条目可以按原题讲；没有不能编造。"
+    },
+    {
+      "id": "discussions",
+      "name": "公开学生讨论",
+      "intent": [
+        "大家怎么看",
+        "学生反馈",
+        "吐槽",
+        "争议",
+        "共同问题",
+        "宿舍怎么样",
+        "校园网怎么样",
+        "食堂怎么样"
+      ],
+      "index": "discussion_catalog.json",
+      "guide": "DISCUSSIONS_START_HERE.md",
+      "truth_boundary": "主题归纳只证明来源曾提及相关问题，不代表全校共识、比例或事实已经证实。"
+    },
+    {
+      "id": "campus",
+      "name": "官方政策与学长学姐经验",
+      "intent": [
+        "校规",
+        "规定",
+        "转专业",
+        "选课",
+        "学长建议",
+        "入学注意",
+        "流程"
+      ],
+      "index": "community_catalog.json",
+      "guide": "CAMPUS_START_HERE.md",
+      "truth_boundary": "官方公开文件可核对规则；学长学姐经验和评论应单独标注。"
+    },
+    {
+      "id": "discovery",
+      "name": "跨平台来源发现",
+      "intent": [
+        "近期帖子",
+        "最新讨论",
+        "贴吧",
+        "知乎",
+        "小红书",
+        "微博",
+        "B站",
+        "抖音"
+      ],
+      "index": "sources/platform-scan/2026-11-04.json",
+      "guide": "sources/公开咨询与经验平台导航.md",
+      "truth_boundary": "扫描记录是历史快照，未审核信息不能冒充真实现行规则或已确认新帖。"
+    }
+  ],
+  "routing_rules": [
+    "先读本索引，再按提问意图选1~2个模块；跨模块问题可联合检索，优先更可靠和更新的材料。",
+    "先打开模块索引再读所需条目；不要扫描整个仓库。",
+    "对事实、学生体验、观点、无法证实的内容分别标注并提供来源和原始日期。",
+    "涉及当前规章需查当前官方规则，旧快照不足以证明现行有效。",
+    "学生没有要求投稿时，不打断学习以要求Git操作。"
+  ]
+}
