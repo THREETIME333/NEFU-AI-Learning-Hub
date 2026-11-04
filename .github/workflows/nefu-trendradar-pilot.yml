@@ -1,0 +1,72 @@
+name: NEFU Public Hotlist Pilot (TrendRadar)
+
+on:
+  workflow_dispatch:
+  # This schedule is active only after the PR has been reviewed and merged.
+  schedule:
+    - cron: '23 7 * * *'  # 15:23 China Standard Time (UTC+8)
+  pull_request:
+    paths:
+      - '.github/workflows/nefu-trendradar-pilot.yml'
+      - 'scripts/configure_trendradar_trial.py'
+      - 'docs/TRENDRADAR_PILOT.md'
+
+concurrency:
+  group: nefu-trendradar-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  public-hotlist:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout NEFU hub (no persisted credentials)
+        uses: actions/checkout@v4
+        with:
+          path: hub
+          persist-credentials: false
+
+      - name: Checkout pinned upstream TrendRadar (read only)
+        uses: actions/checkout@v4
+        with:
+          repository: sansan0/TrendRadar
+          # Pinned revision: review changes before intentionally upgrading.
+          ref: 946f52aa0704883f666c322888b8cd9af4cbcfff
+          path: trendradar
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install locked TrendRadar dependencies
+        working-directory: trendradar
+        run: uv sync --frozen --no-dev
+
+      - name: Prepare keyword-only, no-API-key settings
+        working-directory: trendradar
+        run: uv run python ../hub/scripts/configure_trendradar_trial.py .
+
+      - name: Fetch one public hotlist snapshot
+        working-directory: trendradar
+        # Hotlist matches are discovery leads, NOT validated student posts.
+        run: uv run python -m trendradar
+
+      - name: Upload preview report (no database or cookies)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nefu-public-hotlist-preview
+          path: |
+            trendradar/index.html
+            trendradar/output/index.html
+          if-no-files-found: warn
+          retention-days: 7
