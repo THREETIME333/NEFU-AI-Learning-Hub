@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="东北林业大学计算机类非官方开源 AI 学习资源：按课程找到有出处的资料，复制给你喜欢的大模型辅导学习，并通过 GitHub 反哺。"/>
+  <title>NEFU AI Learning Hub · 东林计算机 AI 共学</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+<header class="top"><div class="wrap top-inner"><a class="brand" href="./">◈ NEFU AI Learning Hub</a><a id="repo-link" class="small-link" href="https://github.com/THREETIME333/NEFU-AI-Learning-Hub" target="_blank" rel="noreferrer">GitHub 仓库 ↗</a></div></header>
+<main class="wrap">
+ <section class="hero"><p class="eyebrow">开放协作 · 非官方学生项目</p><h1>找课程资料，<em>直接让 AI 带你学。</em></h1><p>不用在几十份 PDF 里翻找。选课程、年份或资料类型，一键复制完整学习包到 DeepSeek、ChatGPT 或其他大模型；发现问题，再贡献回仓库。</p><div class="hero-buttons"><a href="#catalog" class="primary">浏览学习资料</a><a href="CONTRIBUTING.md" class="subtle">如何反哺知识库</a></div></section>
+ <section class="info" aria-label="资料来源提醒"><strong>资料真实性说明</strong><span>目前仅有知识整理及原创模拟题。尚无经过授权核实、可公开再发行的历年真题。原创模拟题不会冒充学校试卷，考试范围以实际教学通知为准。</span></section>
+ <section id="catalog" class="library"><div class="section-head"><div><p class="eyebrow">课程资源目录</p><h2>选择适合自己的学习材料</h2></div><span id="count" class="count">正在载入…</span></div>
+ <div class="filters"><label>课程<select id="course"><option value="all">全部课程</option></select></label><label>资料类别<select id="kind"><option value="all">全部类别</option><option value="official_link">官方资源链接</option><option value="authorized_past_paper">经授权的历年真题</option><option value="student_recollection">学生考点回忆</option><option value="original_mock">原创模拟题</option><option value="study_note">知识精讲</option></select></label><label>关键词<input id="search" placeholder="课程、年份、内容..." /></label></div>
+ <div id="items" class="grid" aria-live="polite"></div></section>
+ <section class="help"><h2>复制后怎么使用？</h2><div class="steps"><article><b>01 · 选择资料</b><p>点“复制 AI 学习包”，系统会把提示词、资料正文和来源一并复制。</p></article><article><b>02 · 进入喜欢的 AI</b><p>粘贴到 DeepSeek、ChatGPT 等聊天框；不用购买本项目的 API 服务。</p></article><article><b>03 · 反哺 GitHub</b><p>学习后整理出原创解析或勘误，提交 Issue 或 Pull Request，审核后进入课程库。</p></article></div></section>
+</main><footer><div class="wrap">学生自发维护 · 非东北林业大学官方项目 · 资料有来源 · AI 解析须核验 · <a href="发布前核查.md">发布前核查</a></div></footer><div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

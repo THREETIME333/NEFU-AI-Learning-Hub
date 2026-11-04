@@ -1,0 +1,22 @@
+name: Validate AI learning resources
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate catalog and recorded provenance
+        run: python scripts/validate_catalog.py
+      - name: Validate AI index freshness
+        run: python scripts/build_ai_index.py --check
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v

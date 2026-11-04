@@ -1,0 +1,40 @@
+name: '内容勘误或补充'
+description: '报告错误、缺漏或提出新例题'
+title: '[勘误] '
+labels: []
+body:
+  - type: input
+    id: course
+    attributes:
+      label: 课程名称
+      placeholder: 数据结构
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: 资源文件路径或链接
+      placeholder: 课程/数据结构/复习导航.md
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: 具体错误和修改建议
+      description: 请不要粘贴未经授权的原卷、私人信息或密钥
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 可核实依据
+      description: 官方公开链接 / 自己的推导 / 可复现程序等
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: 发布前确认
+      options:
+        - label: 我已删除个人隐私、受限试卷原文和未经授权的第三方内容
+          required: true

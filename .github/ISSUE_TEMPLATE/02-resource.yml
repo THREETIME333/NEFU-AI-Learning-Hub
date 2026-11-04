@@ -1,0 +1,39 @@
+name: '提交新的资料线索'
+description: '贡献课程资料、授权公开链接或个人考点回忆'
+title: '[资料] '
+body:
+  - type: input
+    id: course
+    attributes:
+      label: 课程
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 资料类别
+      options:
+        - 官方公开资料链接
+        - 经授权的历年真题（先提供授权说明，不贴原卷）
+        - 个人考点回忆（仅主题和题型，不复刻原题）
+        - 原创模拟题
+        - 自己原创的知识讲解
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: 年份/学期（不确定可留空）
+  - type: textarea
+    id: content
+    attributes:
+      label: 资料概要、来源与可公开链接
+      description: 不得直接上传未经授权的校内试卷或教材扫描件
+    validations:
+      required: true
+  - type: textarea
+    id: rights
+    attributes:
+      label: 分享授权与核验说明
+    validations:
+      required: true
