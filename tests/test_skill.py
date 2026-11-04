@@ -33,10 +33,14 @@ class NEFUSkillTests(unittest.TestCase):
             "courses": "catalog.json",
             "discussions": "discussion_catalog.json",
             "campus": "community_catalog.json",
-            "discovery": "sources/platform-scan/2026-11-04.json",
         }
         routes = {module["id"]: module for module in hub["modules"]}
-        self.assertTrue(expected.keys() <= routes.keys())
+        self.assertTrue(set(expected) | {"discovery"} <= routes.keys())
+        # The discovery snapshot changes over time; do not pin a dated filename.
+        self.assertTrue(
+            routes["discovery"]["index"].startswith("sources/platform-scan/")
+        )
+        expected["discovery"] = routes["discovery"]["index"]
         for module_id, index_path in expected.items():
             with self.subTest(module=module_id):
                 module = routes[module_id]
