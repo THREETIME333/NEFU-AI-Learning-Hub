@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "project": "NEFU AI Learning Hub - public student discussion themes",
+  "updated": "2026-11-04",
+  "description": "公开讨论的独立主题摘要索引；published_summary表示摘要已发布，并不意味着个体言论被官方认证。不能当成全校民意统计。",
+  "items": [
+    {
+      "id": "discussion-dormitories",
+      "title": "宿舍与住宿条件",
+      "topic": "校园住宿",
+      "tags": [
+        "宿舍",
+        "住宿",
+        "新生",
+        "设施",
+        "几人间"
+      ],
+      "path": "学生讨论/专题/宿舍与住宿条件.md",
+      "status": "published_summary",
+      "evidence_level": "multiple_source_mentions",
+      "reviewed_at": "2026-11-04",
+      "representativeness": "unknown_nonrepresentative",
+      "summary": "不同官方报道、历史匿名问卷和媒体资料都涉及住宿，但不同年级和宿舍条件不能混为一谈。",
+      "sources": [
+        {
+          "url": "https://ecology.nefu.edu.cn/info/1035/4221.htm",
+          "kind": "official_news",
+          "date": "2026-10"
+        },
+        {
+          "url": "https://cfl.nefu.edu.cn/info/1167/8446.htm",
+          "kind": "official_news",
+          "date": "2026-10"
+        },
+        {
+          "url": "https://cn.colleges.chat/universities/dong-bei-lin-ye-da-xue/",
+          "kind": "anonymous_student_survey",
+          "date": "2023-2026"
+        },
+        {
+          "url": "https://k.sina.com.cn/article_6105713761_16bedcc6102001zzoa.html",
+          "kind": "media_report",
+          "date": "2026-03"
+        }
+      ]
+    },
+    {
+      "id": "discussion-campus-network",
+      "title": "校园网络与学习设施",
+      "topic": "校园网络",
+      "tags": [
+        "校园网",
+        "WiFi",
+        "教学设施",
+        "学习环境"
+      ],
+      "path": "学生讨论/专题/校园网络与学习设施.md",
+      "status": "published_summary",
+      "evidence_level": "multiple_source_mentions",
+      "reviewed_at": "2026-11-04",
+      "representativeness": "unknown_nonrepresentative",
+      "summary": "有公开反馈提到网络和教学设施，不代表全校网络质量调查或当前技术故障公告。",
+      "sources": [
+        {
+          "url": "https://ecology.nefu.edu.cn/info/1035/4221.htm",
+          "kind": "official_news",
+          "date": "2026-10"
+        },
+        {
+          "url": "https://cn.colleges.chat/universities/dong-bei-lin-ye-da-xue/",
+          "kind": "anonymous_student_survey",
+          "date": "2023-2026"
+        },
+        {
+          "url": "https://cfl.nefu.edu.cn/info/1167/8446.htm",
+          "kind": "official_news",
+          "date": "2026-10"
+        }
+      ]
+    },
+    {
+      "id": "discussion-dining",
+      "title": "食堂与日常生活体验",
+      "topic": "校园餐饮",
+      "tags": [
+        "食堂",
+        "餐饮",
+        "生活",
+        "价格",
+        "设施"
+      ],
+      "path": "学生讨论/专题/食堂与日常生活体验.md",
+      "status": "published_summary",
+      "evidence_level": "multiple_source_mentions",
+      "reviewed_at": "2026-11-04",
+      "representativeness": "unknown_nonrepresentative",
+      "summary": "多个渠道有餐饮和校园生活体验话题，但不能据此判断满意度或当前菜价。",
+      "sources": [
+        {
+          "url": "https://ecology.nefu.edu.cn/info/1035/4221.htm",
+          "kind": "official_news",
+          "date": "2026-10"
+        },
+        {
+          "url": "https://cfl.nefu.edu.cn/info/1167/8446.htm",
+          "kind": "official_news",
+          "date": "2026-10"
+        },
+        {
+          "url": "https://cn.colleges.chat/universities/dong-bei-lin-ye-da-xue/",
+          "kind": "anonymous_student_survey",
+          "date": "2023-2026"
+        }
+      ]
+    }
+  ]
+}
