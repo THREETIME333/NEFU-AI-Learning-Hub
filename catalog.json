@@ -50,6 +50,30 @@
       "verification": "reviewed",
       "source": "公开网页链接，核对日期见正文",
       "description": "学校公开课程平台与资源入口"
+    },
+    {
+      "id": "prob-public-course",
+      "course": "概率论与数理统计",
+      "title": "公开课程学习导航",
+      "kind": "official_link",
+      "year": null,
+      "term": "unknown",
+      "path": "学校资源/概率论与数理统计-公开课程学习导航.md",
+      "verification": "reviewed",
+      "source": "中国大学生在线东北林业大学公开课程介绍、学校公开网站",
+      "description": "公开教学资源入口与课程主题；非当前考试大纲或原卷"
+    },
+    {
+      "id": "prob-original-fundamentals",
+      "course": "概率论与数理统计",
+      "title": "概率论基础原创教学",
+      "kind": "study_note",
+      "year": null,
+      "term": "unknown",
+      "path": "课程资料/概率论与数理统计/概率论基础原创教学.md",
+      "verification": "unverified",
+      "source": "学生AI辅助撰写的原创基础教学笔记，非学校原题",
+      "description": "事件运算、条件概率、独立性与两个原创例题"
     }
   ]
 }
