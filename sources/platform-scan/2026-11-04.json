@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "scan_date": "2026-11-04",
+  "scope": "东北林业大学的公开咨询、学生经验、校园生活及教学政策信息",
+  "status": "source_discovery_only_not_reviewed_community_content",
+  "summary_path": "sources/platform-scan/2026-11-04-全平台公开资料巡检.md",
+  "coverage": [
+    {
+      "platform": "official_nefu",
+      "discovery": "verified",
+      "latest_confirmed": "2026-11-04",
+      "note": "学校官网首页；院系10月新生座谈会；本科生院近期通知"
+    },
+    {
+      "platform": "chsi_admissions_qa",
+      "discovery": "verified",
+      "latest_confirmed": "2026-06-28",
+      "note": "阳光高考2026年公开招生问答"
+    },
+    {
+      "platform": "colleges_chat",
+      "discovery": "verified_survey",
+      "latest_confirmed": "2026-05",
+      "note": "匿名生活质量问卷，不代表全体学生或现行政策"
+    },
+    {
+      "platform": "tieba",
+      "discovery": "partial",
+      "latest_confirmed": "2026-08-27",
+      "note": "8月提问仅搜索片段；11月3、4日未核实；主吧403"
+    },
+    {
+      "platform": "douyin",
+      "discovery": "verified_videos",
+      "latest_confirmed": "2026-09-18",
+      "note": "新生、军训、招聘会视频；不收录评论正文"
+    },
+    {
+      "platform": "bilibili",
+      "discovery": "historical_videos",
+      "latest_confirmed": "2025-11-18",
+      "note": "找到历年校园视频，本轮无确认2026年11月新视频"
+    },
+    {
+      "platform": "weibo",
+      "discovery": "partial",
+      "latest_confirmed": "2026-08-13",
+      "note": "学校官微公开转载与团委微博历史页面；没有可确认当天新帖"
+    },
+    {
+      "platform": "zhihu",
+      "discovery": "not_verified",
+      "latest_confirmed": null,
+      "note": "未找到日期与原URL同时可靠的东林学生问答"
+    },
+    {
+      "platform": "xiaohongshu",
+      "discovery": "not_verified",
+      "latest_confirmed": null,
+      "note": "未取得可核对真实帖文及发布日期的东林笔记"
+    }
+  ],
+  "leads": [
+    {
+      "id": "nefu-ecology-forum-oct",
+      "topic": "2026级新生对宿舍、网络和食堂的建议",
+      "source_type": "official_news",
+      "date": "2026-10-16",
+      "url": "https://ecology.nefu.edu.cn/info/1035/4221.htm",
+      "review_status": "source_read_verified"
+    },
+    {
+      "id": "nefu-foreign-forum-oct",
+      "topic": "2026级新生对住宿设施、食堂及教学环境的反馈",
+      "source_type": "official_news",
+      "date": "2026-10-22",
+      "url": "https://cfl.nefu.edu.cn/info/1167/8446.htm",
+      "review_status": "source_read_verified"
+    },
+    {
+      "id": "nefu-student-survey",
+      "topic": "宿舍、校园网、食堂、跑步打卡、阶段考及生活经验",
+      "source_type": "anonymous_opinion_survey",
+      "date": "2026-05",
+      "url": "https://cn.colleges.chat/universities/dong-bei-lin-ye-da-xue/",
+      "review_status": "source_read_nonrepresentative_opinions"
+    },
+    {
+      "id": "nefu-housing-news",
+      "topic": "2026年3月宿舍6/8人间与宿舍建设媒体核验",
+      "source_type": "media_report",
+      "date": "2026-03-25",
+      "url": "https://k.sina.com.cn/article_6105713761_16bedcc6102001zzoa.html",
+      "review_status": "source_read_historical_report"
+    },
+    {
+      "id": "nefu-chsi-admissions",
+      "topic": "2026招生及转专业公开答疑",
+      "source_type": "official_qa",
+      "date": "2026-06-28",
+      "url": "https://gaokao.chsi.com.cn/zxdy/forum--method-listDefault%2Ctype-sch%2Cstart-0%2Cforumid-8763.dhtml",
+      "review_status": "public_search_and_page_evidence"
+    },
+    {
+      "id": "nefu-course-election",
+      "topic": "2026-2027学年第一学期选课指南",
+      "source_type": "official_policy_notice",
+      "date": "2026-07-07",
+      "url": "https://bksy.nefu.edu.cn/info/1022/6225.htm",
+      "review_status": "source_read_verified"
+    },
+    {
+      "id": "nefu-tieba-aug-questions",
+      "topic": "2026年8月转专业第二志愿及再次申请疑问",
+      "source_type": "forum_excerpt",
+      "date": "2026-08-27",
+      "url": "https://tieba.baidu.com/f?kw=%E4%B8%9C%E5%8C%97%E6%9E%97%E4%B8%9A%E5%A4%A7%E5%AD%A6",
+      "review_status": "thread_url_missing_do_not_infer_answers"
+    },
+    {
+      "id": "nefu-douyin-welcome",
+      "topic": "2026新生入学短视频",
+      "source_type": "public_video",
+      "date": "2026-08-31",
+      "url": "https://www.douyin.com/video/7680006392154417993",
+      "review_status": "public_video_date_verified"
+    },
+    {
+      "id": "nefu-douyin-training",
+      "topic": "2026军训拉练短视频",
+      "source_type": "public_video",
+      "date": "2026-09-18",
+      "url": "https://www.douyin.com/video/7686555394780592244",
+      "review_status": "public_video_date_verified"
+    },
+    {
+      "id": "nefu-weibo-welcome",
+      "topic": "2026新生校园景观介绍",
+      "source_type": "official_social_mirror",
+      "date": "2026-08-13",
+      "url": "https://www.sina.cn/news/detail/5331540059883632.html",
+      "review_status": "public_media_mirror"
+    },
+    {
+      "id": "nefu-bilibili-debate",
+      "topic": "东林学生辩论活动（历史视频）",
+      "source_type": "public_video",
+      "date": "2025-10-14",
+      "url": "https://www.bilibili.com/video/BV1qc4bzbExL/",
+      "review_status": "historical_public_video"
+    },
+    {
+      "id": "nefu-main-nov4",
+      "topic": "2026年11月4日学校新闻与校园活动",
+      "source_type": "official_home",
+      "date": "2026-11-04",
+      "url": "https://www.nefu.edu.cn/",
+      "review_status": "public_home_verified"
+    }
+  ]
+}
