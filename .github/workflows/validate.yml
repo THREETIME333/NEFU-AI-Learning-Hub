@@ -18,5 +18,7 @@ jobs:
         run: python scripts/validate_catalog.py
       - name: Validate AI index freshness
         run: python scripts/build_ai_index.py --check
+      - name: Validate NEFU Skill format and references
+        run: python scripts/validate_nefu_skill.py
       - name: Unit tests
         run: python -m unittest discover -s tests -v
