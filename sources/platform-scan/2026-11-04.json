@@ -58,6 +58,12 @@
       "discovery": "not_verified",
       "latest_confirmed": null,
       "note": "未取得可核对真实帖文及发布日期的东林笔记"
+    },
+    {
+      "platform": "zhihuishu_public_course",
+      "discovery": "verified_course_catalog",
+      "latest_confirmed": "2026-10-29",
+      "note": "东林软件工程导论课程主页显示2026秋冬已运行；具体互动、资料权限未核实"
     }
   ],
   "leads": [
@@ -156,6 +162,14 @@
       "date": "2026-11-04",
       "url": "https://www.nefu.edu.cn/",
       "review_status": "public_home_verified"
+    },
+    {
+      "id": "nefu-software-eng-zhihuishu",
+      "topic": "软件工程导论公开课程、课程资源与互动问答入口",
+      "source_type": "public_course_catalog",
+      "date": "2026-10-29",
+      "url": "https://coursehome.zhihuishu.com/courseHome/1000009422/315803/23?ft=map",
+      "review_status": "public_course_catalog_verified_content_access_not_claimed"
     }
   ]
 }
