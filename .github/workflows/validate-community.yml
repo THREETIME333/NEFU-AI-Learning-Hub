@@ -1,0 +1,26 @@
+name: Validate Campus Knowledge
+on:
+  push:
+    paths:
+      - "community_catalog.json"
+      - "校园经验/**"
+      - "scripts/validate_community.py"
+      - ".github/workflows/validate-community.yml"
+  pull_request:
+    paths:
+      - "community_catalog.json"
+      - "校园经验/**"
+      - "scripts/validate_community.py"
+      - ".github/workflows/validate-community.yml"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate approved campus records
+        run: python scripts/validate_community.py
