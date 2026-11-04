@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "source": "baidu_tieba_public_search",
+  "updated": "2026-11-04",
+  "notice": "候选来源不是已审核的学生建议，不进入community_catalog.json。禁止将帖子完整内容、个人信息或旧帖观点当成当前规则。",
+  "items": [
+    {
+      "id": "tieba-nefu-clubs-2016",
+      "url": "https://tieba.baidu.com/p/4689773469",
+      "topic": "社团招新与信息核实",
+      "source_title": "社团简介及其群号汇总",
+      "source_year": 2016,
+      "discovered_at": "2026-11-04",
+      "access": "public_search_excerpt_only_direct_fetch_restricted",
+      "status": "candidate_unreviewed",
+      "content_type": "historical_discussion",
+      "summary": "一条历史性社团讨论，提示新生在参与社团招新时留意宣传及费用相关问题。该内容只用于提出核实主题，不能用来断言2026年的社团政策、收费标准或联系方式。",
+      "rights": "link_and_independent_summary_only_no_repost_permission",
+      "verify_against": "学校或社团组织当前公开招新通知（尚未核对）"
+    }
+  ]
+}
