@@ -90,7 +90,7 @@ def validate() -> list[str]:
                 if not isinstance(rel, str) or not rel.strip():
                     errors.append(f"Hub module {ident} missing {field}")
                     continue
-                normalized = rel.replace("\\\\", "/")
+                normalized = rel.replace("\\", "/")
                 destination = (ROOT / normalized).resolve()
                 if (Path(normalized).is_absolute()
                         or not destination.is_relative_to(ROOT.resolve())
@@ -113,4 +113,4 @@ if __name__ == "__main__":
         for problem in problems:
             print("ERROR:", problem)
         raise SystemExit(1)
-    print("PASS: NEFU Campus Skill metadata, references, routing and safety cues")
+    print("PASS: NEFU Campus Skill metadata, reference links and hub routes")
