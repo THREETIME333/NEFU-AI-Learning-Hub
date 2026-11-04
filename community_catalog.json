@@ -3,5 +3,29 @@
   "project": "NEFU AI Learning Hub - community knowledge",
   "updated": "2026-11-04",
   "description": "非官方校园经验、意见、实用提示和可核实的公开校规入口。仅收录已审核发布的公共文档。",
-  "items": []
+  "items": [
+    {
+      "id": "nefu-2026-autumn-administration",
+      "title": "2026年秋学期官方选课、学籍与转专业通知导航",
+      "entry_type": "official_reference",
+      "topic": "选课与学籍",
+      "tags": [
+        "选课",
+        "学籍",
+        "转专业",
+        "本科生院",
+        "2026秋"
+      ],
+      "scope": "东北林业大学2026年秋学期；各条通知按适用年级和截止日期分别解释",
+      "path": "校园经验/条目/2026秋学期官方选课学籍与转专业导航.md",
+      "status": "published",
+      "source_category": "official_public",
+      "source_note": "原创整理2026年学校本科生院已公开网页及可核实的学生通知列表；不转载附件原文",
+      "published_at": "2026-11-04",
+      "reviewed_at": "2026-11-04",
+      "consent_to_publish": true,
+      "official_url": "https://bksy.nefu.edu.cn/gztz/xstz.htm",
+      "effective_date": "2026-09-24"
+    }
+  ]
 }
