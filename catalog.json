@@ -74,6 +74,18 @@
       "verification": "unverified",
       "source": "学生AI辅助撰写的原创基础教学笔记，非学校原题",
       "description": "事件运算、条件概率、独立性与两个原创例题"
+    },
+    {
+      "id": "prob-campus-paper-index",
+      "course": "概率论与数理统计",
+      "title": "历年阶段考试校内资料线索（15套，非原卷）",
+      "kind": "study_note",
+      "year": null,
+      "term": "unknown",
+      "path": "学校资源/概率论历年试卷校内检索索引.md",
+      "verification": "unverified",
+      "source": "学生现有学习资料索引，仅记录来源与学年，不公开试卷或答案",
+      "description": "阶段一9套、阶段二6套校内检索线索；公共仓库目前未有原卷"
     }
   ]
 }
