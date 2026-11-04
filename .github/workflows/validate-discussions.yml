@@ -1,0 +1,29 @@
+name: Validate Student Discussion Topics
+on:
+  push:
+    paths:
+      - "HUB_INDEX.json"
+      - "discussion_catalog.json"
+      - "学生讨论/**"
+      - "scripts/validate_discussions.py"
+      - ".github/workflows/validate-discussions.yml"
+  pull_request:
+    paths:
+      - "HUB_INDEX.json"
+      - "discussion_catalog.json"
+      - "学生讨论/**"
+      - "scripts/validate_discussions.py"
+      - ".github/workflows/validate-discussions.yml"
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate topic sources, paths, and AI routes
+        run: python scripts/validate_discussions.py
