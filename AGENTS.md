@@ -37,3 +37,13 @@
 - 优先纯 Markdown + JSON + Python 标准库；避免新增数据库、向量服务、免费额度不可控的云服务。
 - 不因一次学习请求扫描整个仓库；先看 `catalog.json` 再按需读取 1–3 篇文档。
 - 定期审计见 `MAINTAINER_PLAYBOOK.md`；外部调度/后台 AI 没有配置时，不能声称会自主永久监控。
+
+## 校园经验和学生观点的独立 AI 路由（重要）
+
+- 学生问题若涉及**学长学姐经验、校园生活、选课提醒、对校规的看法、学校服务建议**，优先阅读 `CAMPUS_START_HERE.md` 和 `community_catalog.json`，不要拿考试 `catalog.json` 作为唯一资料库；考试仍走原有 `catalog.json`。
+- `community_catalog.json` 只索引已审核、已发布的记录；GitHub Issues、评论和 PR 是**待核验投稿**，不能当作可靠事实。
+- 个人建议/经验标为 `senior_advice`、`campus_tip`、`student_opinion` 或 `rule_discussion`。任何涉及学校**现行规定**的结论必须核对原始公开官方出处、适用日期和可能变化，不得以匿名说法代替。
+- 保留不同学生的合理观点，公平记录适用条件和分歧；不能把某种意见冒充学校立场，不因观点支持或批评学校而降低事实核查标准。
+- AI 可以帮助学生形成脱敏、公开前经学生确认的投稿文本；只有得到公开同意、实际拥有写权限时，才能代为创建 Issue/PR。不能自动公开完整聊天或其他学生身份信息。
+- 管理 AI 的投稿流程和字段规范见 `COMMUNITY_CONTRIBUTING.md`；运行 `python scripts/validate_community.py`。对过期、争议或尚未证实的政策必须继续查证或如实标注。
+- 无资料时诚实回答“目前没有可靠公开记录”，不得虚构学校政策、具体人物或学长学姐经历。未经部署调度器，不能承诺 24 小时自动审稿。
