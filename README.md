@@ -12,6 +12,16 @@
 
 **学生不需要了解目录和 JSON，也不需要操作 Git。** 但普通 DeepSeek 网页聊天不一定有 GitHub 读取工具；需使用实际支持仓库读取的 AI Agent/MCP 客户端。
 
+## 🧩 NEFU Campus Skill：给 AI 装上东林资料检索方法
+
+**Skill = AI 的使用说明书，不是资料本身。** 支持 Skills 的 Agent 可以按说明检索本仓库；但**把 URL 发给普通 AI 不代表自动安装**。只要 AI 有 GitHub 读取能力，不安装 Skill 也可通过 `HUB_INDEX.json` 使用知识库。
+
+- 📦 [查看并获取 NEFU Campus Skill](.agents/skills/nefu-campus/SKILL.md)
+- 🧑‍🎓 [小白安装教程（Codex / Claude Code / DSH）](.agents/skills/nefu-campus/references/INSTALL.md)
+- 🧪 [运行 Skill 格式与引用检查](scripts/validate_nefu_skill.py)
+
+**最简单的使用：** 把本仓库链接发给具有 GitHub 读取能力的 AI，让它读取 `HUB_INDEX.json`，直接提问即可。想在 Codex 中长期使用，可以将 Skill 文件夹放在 `.agents/skills/nefu-campus/`；其他客户端请看安装教程。
+
 ## 📚 一个入口，四个内容模块
 
 | 你想了解什么 | 进入模块 | 数据性质 |
