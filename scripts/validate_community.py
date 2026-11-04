@@ -57,7 +57,7 @@ def validate():
         if isinstance(path, str):
             q = Path(path)
             if (not path.startswith("校园经验/条目/") or q.is_absolute()
-                    or ".." in q.parts or "\" in path or q.suffix != ".md"
+                    or ".." in q.parts or chr(92) in path or q.suffix != ".md"
                     or not (ROOT / q).is_file()
                     or not (ROOT / q).resolve().is_relative_to(ROOT.resolve())):
                 errors.append(f"{p}: unsafe or absent publication path {path}")
