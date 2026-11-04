@@ -1,0 +1,160 @@
+name: NEFU Connector Install Smoke Tests
+
+# Isolated, manual/PR-only installation checks; NOT persistent hosting.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/nefu-connectors-smoke.yml'
+      - 'docs/CONNECTOR_INSTALL_STATUS.md'
+
+concurrency:
+  group: nefu-connectors-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test-install:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - project: rsshub
+            repository: DIYgod/RSSHub
+            ref: 8f4fd435601c7f5048ce65284405f276f70fb918
+          - project: dailyhotapi
+            repository: imsyy/DailyHotApi
+            ref: 36c77e3bd891c11642d314cfb229bf31646704de
+          - project: bilibili-mcp
+            repository: Yaemikoreal/BilibiliPlayer
+            ref: f6abb5c0ef91813b57085066bb64d5716a499e6f
+          - project: xiaohongshu-mcp
+            repository: xpzouying/xiaohongshu-mcp
+            ref: 539d296f5623ab1a359065d8dc74dccfb237b05a
+          - project: tieba-mcp
+            repository: f25h-233/tieba-mcp
+            ref: 0e4556ed342e4bc2ccb8ce6bc5cb486fc0677a08
+          - project: mediacrawler
+            repository: NanmiCoder/MediaCrawler
+            ref: b4bc7c47582e39780783bb9f7e4fef57f93bdcae
+          - project: easyspider
+            repository: NaiboWang/EasySpider
+            ref: 35b7b3caa4a008ee66348fb3d2785dfd055c4d56
+
+    steps:
+      - name: Checkout selected pinned upstream project
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repository }}
+          ref: ${{ matrix.ref }}
+          path: upstream
+          persist-credentials: false
+
+      - name: Set up Python for Python-based projects
+        if: contains(fromJSON('["bilibili-mcp","tieba-mcp","mediacrawler"]'), matrix.project)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node for Node-based projects
+        if: contains(fromJSON('["dailyhotapi","tieba-mcp"]'), matrix.project)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up Go for Xiaohongshu
+        if: matrix.project == 'xiaohongshu-mcp'
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: upstream/go.mod
+
+      - name: Install uv for MediaCrawler
+        if: matrix.project == 'mediacrawler'
+        uses: astral-sh/setup-uv@v7
+
+      - name: RSSHub official Docker image boot and health check
+        if: matrix.project == 'rsshub'
+        shell: bash
+        run: |
+          docker pull diygod/rsshub:latest
+          docker run -d --rm --name nefu-rsshub -p 127.0.0.1:1200:1200 \
+            -e NODE_ENV=production diygod/rsshub:latest
+          for i in $(seq 1 20); do
+            if curl -fsS --max-time 3 http://127.0.0.1:1200/healthz > /dev/null; then
+              echo "✅ RSSHub launched on ephemeral runner; /healthz responds" >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            sleep 3
+          done
+          docker logs nefu-rsshub
+          exit 1
+
+      - name: DailyHotApi dependency installation and compilation
+        if: matrix.project == 'dailyhotapi'
+        working-directory: upstream
+        shell: bash
+        run: |
+          npm install --global pnpm@10
+          pnpm install --frozen-lockfile
+          pnpm run build
+          echo "✅ DailyHotApi installed and compiled; not hosted after runner exits" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: BilibiliPlayer dependency installation (no login)
+        if: matrix.project == 'bilibili-mcp'
+        working-directory: upstream
+        shell: bash
+        run: |
+          python -m pip install -r requirements.txt
+          python -m py_compile mcp_server.py
+          echo "✅ BilibiliPlayer dependencies installed and entry point compiled; login/API not tested" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Xiaohongshu MCP Go build (no account/session)
+        if: matrix.project == 'xiaohongshu-mcp'
+        working-directory: upstream
+        shell: bash
+        run: |
+          go build -o /tmp/nefu-xiaohongshu-mcp .
+          test -s /tmp/nefu-xiaohongshu-mcp
+          echo "✅ Xiaohongshu MCP Go binary built; browser, login and site access NOT tested" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Tieba MCP dependency and syntax check (no browser/API)
+        if: matrix.project == 'tieba-mcp'
+        working-directory: upstream
+        shell: bash
+        run: |
+          npm ci --ignore-scripts
+          python -m pip install playwright
+          node --check index.js
+          python -m py_compile worker.py
+          echo "✅ Tieba MCP dependencies installed and syntax checked; no signing/browser/login/data access" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: MediaCrawler Python dependency installation (no crawl)
+        if: matrix.project == 'mediacrawler'
+        working-directory: upstream
+        shell: bash
+        run: |
+          uv sync --frozen --no-dev
+          uv run python -m compileall -q config
+          echo "✅ MediaCrawler dependencies installed and config compiled; no browser/login/crawl" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: EasySpider desktop packaging assessment (not installable headless)
+        if: matrix.project == 'easyspider'
+        working-directory: upstream
+        shell: bash
+        run: |
+          test -d ElectronJS
+          echo "⚪ EasySpider is a desktop GUI; checked source presence only. NOT installed or usable on a headless GitHub runner." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Explain temporary runner boundary
+        if: always()
+        shell: bash
+        run: |
+          echo "Project: ${{ matrix.repository }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Source revision: ${{ matrix.ref }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "This CI job uses a disposable GitHub Actions runner; it creates no lasting cloud service, credentials, data store, or public API." >> "$GITHUB_STEP_SUMMARY"
