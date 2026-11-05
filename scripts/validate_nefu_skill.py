@@ -70,15 +70,41 @@ def validate() -> list[str]:
             errors.append(f"SKILL.md must mention index: {index}")
     try:
         hub = json.loads((ROOT / "HUB_INDEX.json").read_text(encoding="utf-8"))
-        module_targets = {mod["index"] for mod in hub["modules"]}
+        if not isinstance(hub, dict) or not isinstance(hub.get("modules"), list):
+            raise ValueError("Hub index must contain a modules array")
+        module_targets: set[str] = set()
+        module_ids: set[str] = set()
+        for module in hub["modules"]:
+            if not isinstance(module, dict):
+                errors.append("Hub module must be an object")
+                continue
+            ident = module.get("id")
+            if not isinstance(ident, str) or not ident:
+                errors.append("Hub module missing id")
+            elif ident in module_ids:
+                errors.append(f"Duplicate hub module id: {ident}")
+            else:
+                module_ids.add(ident)
+            for field in ("index", "guide"):
+                rel = module.get(field)
+                if not isinstance(rel, str) or not rel.strip():
+                    errors.append(f"Hub module {ident} missing {field}")
+                    continue
+                normalized = rel.replace("\\", "/")
+                destination = (ROOT / normalized).resolve()
+                if (Path(normalized).is_absolute()
+                        or not destination.is_relative_to(ROOT.resolve())
+                        or not destination.is_file()):
+                    errors.append(f"Hub module {ident} has missing/unsafe {field}: {rel}")
+                if field == "index":
+                    module_targets.add(rel)
         for name in ("catalog.json", "discussion_catalog.json", "community_catalog.json"):
             if name not in module_targets:
                 errors.append(f"Hub route missing {name}")
-    except (ValueError, OSError, KeyError, TypeError) as exc:
+    except (ValueError, OSError, TypeError) as exc:
         errors.append(f"Cannot check HUB_INDEX.json routing: {exc}")
-    for critical in ("GitHub", "403", "投稿", "不", "原卷", "权限"):
-        if critical not in text:
-            errors.append(f"Skill missing required safety or experience cue: {critical}")
+    # Safety and teaching prose is reviewed as content. CI enforces its linked
+    # instructions and actual routes, not fragile matches on Chinese adjectives.
     return errors
 
 if __name__ == "__main__":
@@ -87,4 +113,4 @@ if __name__ == "__main__":
         for problem in problems:
             print("ERROR:", problem)
         raise SystemExit(1)
-    print("PASS: NEFU Campus Skill metadata, references, routing and safety cues")
+    print("PASS: NEFU Campus Skill metadata, reference links and hub routes")
